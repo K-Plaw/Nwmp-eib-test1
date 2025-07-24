@@ -1,3 +1,11 @@
+:root {
+  --green: #207744;
+  --dark-green: #15572c;
+  --bg: #f3f8f4;
+  --text: #333;
+  --light-text: #666;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,96 +14,151 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg);
+  color: var(--text);
   line-height: 1.6;
-  color: #333;
-  background-color: #f7f9fc;
 }
 
 .container {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: auto;
-  padding: 2rem;
+  padding: 0 1rem;
 }
 
+/* ------------------ HERO ------------------ */
 .hero {
-  text-align: center;
+  position: relative;
+  background: linear-gradient(135deg, #d3f4d9, #b4e1d4);
+  padding: 5rem 1rem;
   margin-bottom: 3rem;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
 }
 
 .hero h1 {
-  font-size: 2.5rem;
-  color: #1a3f2f;
-  margin-bottom: 0.5rem;
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--green);
+  margin-bottom: 1rem;
 }
 
 .hero p {
-  color: #555;
   font-size: 1.1rem;
+  color: var(--light-text);
 }
 
+/* ------------------ CARDS ------------------ */
 .cards {
   display: grid;
   gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
   margin-bottom: 3rem;
 }
 
 .card {
   background: white;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  border-radius: 1rem;
+  padding: 2rem;
   text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(32, 119, 68, 0.15);
 }
 
 .card .icon {
-  font-size: 2rem;
-  margin-bottom: 0.8rem;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  animation: pulse 2s infinite ease-in-out;
 }
 
 .card h2 {
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
-  color: #205437;
+  font-size: 1.3rem;
+  margin-bottom: 0.6rem;
+  color: var(--green);
 }
 
 .card p {
-  font-size: 0.95rem;
-  color: #555;
+  color: var(--light-text);
+}
+
+/* ------------------ WHY SECTION ------------------ */
+.why {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 2rem 0;
 }
 
 .why h3 {
-  font-size: 1.75rem;
-  color: #1a3f2f;
+  font-size: 2rem;
   margin-bottom: 1rem;
+  color: var(--dark-green);
 }
 
 .why p {
-  margin-bottom: 1.5rem;
-  color: #444;
   max-width: 800px;
+  margin: 0 auto 1.5rem;
+  color: #444;
 }
 
 .cta-button {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  background-color: #1f703a;
+  background: var(--green);
   color: white;
+  padding: 0.8rem 1.6rem;
   border-radius: 6px;
-  text-decoration: none;
   font-weight: bold;
-  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .cta-button:hover {
-  background-color: #15572c;
+  background: var(--dark-green);
+  transform: scale(1.05);
 }
 
+/* ------------------ FOOTER ------------------ */
 .footer {
   text-align: center;
-  margin-top: 4rem;
-  padding-top: 1rem;
-  border-top: 1px solid #ccc;
+  padding: 2rem 0;
+  font-size: 0.9rem;
   color: #777;
-  font-size: 0.875rem;
+  border-top: 1px solid #ddd;
+  background: #e6f3ec;
+  border-radius: 12px;
+  margin-top: 2rem;
+}
+
+/* ------------------ Animation ------------------ */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
 }
